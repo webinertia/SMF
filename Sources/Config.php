@@ -268,7 +268,7 @@ class Config
 	 *
 	 * Whether to show debug info.
 	 */
-	public static $db_show_debug;
+	public static $db_show_debug = true;
 
 	/**
 	 * @var string
@@ -2896,36 +2896,30 @@ class Config
 
 		// Search for a working temp directory.
 		foreach ($temp_dir_options as $id_temp => $temp_option) {
-			switch ($temp_option) {
-				case 'cachedir':
-					$possible_temp = rtrim(self::$cachedir, '\\/');
-					break;
+			$possible_temp[] = match($temp_option) {
+				'cachedir' => rtrim(self::$cachedir, '\\/'),
+				'session.save_path' => rtrim(ini_get('session.save_path'), '\\/'),
+				'upload_tmp_dir' => rtrim(ini_get('upload_tmp_dir'), '\\/'),
+				'sys_get_temp_dir' => sys_get_temp_dir()
+			};
+		}
+		if (Sapi::isOS(Sapi::OS_WINDOWS)) {
+			$restriction = ['C:\Windows\TEMP']; // this does not work, ever and kills developers local repos
+		}
+		// Check if we have a restriction preventing this from working.
+		if ($restriction) {
+			for ($i=0; $i < \count($possible_temp); $i++) {
 
-				case 'session.save_path':
-					$possible_temp = rtrim(ini_get('session.save_path'), '\\/');
-					break;
-
-				case 'upload_tmp_dir':
-					$possible_temp = rtrim(ini_get('upload_tmp_dir'), '\\/');
-					break;
-
-				default:
-					$possible_temp = sys_get_temp_dir();
-					break;
-			}
-
-			// Check if we have a restriction preventing this from working.
-			if ($restriction) {
-				foreach ($restriction as $dir) {
-					if (str_contains($possible_temp, $dir) && is_writable($possible_temp)) {
-						self::$temp_dir = $possible_temp;
-						break;
-					}
+				if (\in_array( $possible_temp[$i], $restriction)) {
+					unset($possible_temp[$i]);
 				}
 			}
-			// No restrictions, but need to check for writable status.
-			elseif (is_writable($possible_temp)) {
-				self::$temp_dir = $possible_temp;
+		}
+		// reverse the order so we have the preferred first
+		$possible_temp = \array_reverse($possible_temp, true);
+		foreach ($possible_temp as $target) {
+			if (\is_writable($target)) {
+				self::$temp_dir = $target;
 				break;
 			}
 		}

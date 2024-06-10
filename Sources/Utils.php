@@ -1713,8 +1713,9 @@ class Utils
 			if (is_writable($path)) {
 				return true;
 			}
-
-			@chmod($path, $val);
+			if (! Sapi::isOS(Sapi::OS_WINDOWS)) {
+				@chmod($path, $val);
+			}
 		}
 
 		// Didn't work.

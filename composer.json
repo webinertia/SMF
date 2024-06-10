@@ -6,19 +6,15 @@
             "type": "vcs"
         }
     ],
+	"autoload": {
+		"psr-4": {
+			"SMF\\": "Sources"
+		}
+	},
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
         "simplemachines/build-tools": "dev-release-3.0",
         "friendsofphp/php-cs-fixer": "^3.40"
-    },
-    "scripts": {
-        "lint": "php-cs-fixer --quiet check --config .php-cs-fixer.dist.php --path-mode=intersection $(git diff --name-only \"*.php\") || php-cs-fixer check --diff --config .php-cs-fixer.dist.php --path-mode=intersection $(git diff --name-only \"*.php\")",
-        "lint-fix": "php-cs-fixer fix -v --config .php-cs-fixer.dist.php --path-mode=intersection $(git diff --name-only \"*.php\")"
-    },
-    "config": {
-        "platform": {
-            "php": "8.0.0"
-        }
     }
 }

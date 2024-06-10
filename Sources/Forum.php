@@ -242,6 +242,7 @@ class Forum
 		// Why three different hooks? For historical reasons.
 		// Allow modifying $actions easily.
 		IntegrationHook::call('integrate_actions', [&self::$actions]);
+		//IntegrationHook::call('integrate_actions', [&self::$actions]);
 
 		// Allow modifying $unlogged_actions easily.
 		IntegrationHook::call('integrate_pre_log_stats', [&self::$unlogged_actions]);
