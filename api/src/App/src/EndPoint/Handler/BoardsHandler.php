@@ -4,20 +4,24 @@ declare(strict_types=1);
 
 namespace App\EndPoint\Handler;
 
+use App\EndPoint\HttpMethodAwareInterface;
+use App\EndPoint\HttpMethodAwareTrait;
 use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class BoardsHandler implements RequestHandlerInterface
+class BoardsHandler implements RequestHandlerInterface, HttpMethodAwareInterface
 {
+    use HttpMethodAwareTrait;
+
     public function __construct(
 
     ) {
 
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handleGet(ServerRequestInterface $request): ResponseInterface
     {
         return new JsonResponse([
             'board' => [
@@ -27,4 +31,10 @@ class BoardsHandler implements RequestHandlerInterface
             ]
         ]);
     }
+
+    public function handlePost(ServerRequestInterface $request): ResponseInterface { }
+
+    public function handlePut(ServerRequestInterface $request): ResponseInterface { }
+
+    public function handleDelete(ServerRequestInterface $request): ResponseInterface { }
 }
