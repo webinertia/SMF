@@ -15,7 +15,7 @@ trait HttpMethodAwareTrait
         try {
             return $this->handleHttpMethod($request);
         } catch (\Throwable $th) {
-            return new JsonResponse([], (int) $th->getCode());
+            return new JsonResponse(['success' => false], (int) $th->getCode());
         }
     }
 
