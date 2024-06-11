@@ -59,7 +59,7 @@ class ConfigProvider
                 'allowed_methods' => ['GET'],
             ],
             [
-                'path'            => '/api/boards',
+                'path'            => '/api/boards[/{id:[\d]+}]',
                 'name'            => 'api.boards',
                 'middleware'      => [
                     EndPoint\Middleware\BoardMiddleware::class,
