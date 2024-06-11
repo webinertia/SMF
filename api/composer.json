@@ -69,8 +69,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/App/src/",
-            "SMF\\": "../Sources/"
+            "App\\": "src/App/src/"
         }
     },
     "autoload-dev": {

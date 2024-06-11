@@ -8,7 +8,7 @@
     ],
 	"autoload": {
 		"psr-4": {
-			"SMF\\": "Sources"
+			"SMF\\": "Sources/"
 		}
 	},
     "minimum-stability": "dev",

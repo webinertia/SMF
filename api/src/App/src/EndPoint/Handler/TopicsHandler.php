@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\EndPoint;
+namespace App\EndPoint\Handler;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class RepliesHandler implements RequestHandlerInterface
+class TopicsHandler implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {

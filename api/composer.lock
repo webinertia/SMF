@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/axleus/axleus-db.git",
-                "reference": "49b9ef2f11003ea6d7cfd3320eeb557486e63fc4"
+                "reference": "fa807b8e2b3e43d95759af01cb44d61d9e36ebed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axleus/axleus-db/zipball/49b9ef2f11003ea6d7cfd3320eeb557486e63fc4",
-                "reference": "49b9ef2f11003ea6d7cfd3320eeb557486e63fc4",
+                "url": "https://api.github.com/repos/axleus/axleus-db/zipball/fa807b8e2b3e43d95759af01cb44d61d9e36ebed",
+                "reference": "fa807b8e2b3e43d95759af01cb44d61d9e36ebed",
                 "shasum": ""
             },
             "require": {
@@ -65,7 +65,7 @@
                 "issues": "https://github.com/axleus/axleus-db/issues",
                 "source": "https://github.com/axleus/axleus-db/tree/1.0.x"
             },
-            "time": "2024-02-24T20:45:50+00:00"
+            "time": "2024-06-10T01:55:02+00:00"
         },
         {
             "name": "brick/varexporter",

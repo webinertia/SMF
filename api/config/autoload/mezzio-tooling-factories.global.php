@@ -7,16 +7,17 @@
  * removing factory definitions; other dependency types may be overwritten
  * when regenerating this file via mezzio-tooling commands.
  */
- 
+
 declare(strict_types=1);
 
 return [
     'dependencies' => [
         'factories' => [
-            App\EndPoint\BoardsHandler::class => App\EndPoint\BoardsHandlerFactory::class,
-            App\EndPoint\RepliesHandler::class => App\EndPoint\RepliesHandlerFactory::class,
-            App\EndPoint\TopicsHandler::class => App\EndPoint\TopicsHandlerFactory::class,
-            App\EndPoint\UsersHandler::class => App\EndPoint\UsersHandlerFactory::class,
+            App\EndPoint\Handler\BoardsHandler::class => App\EndPoint\Handler\BoardsHandlerFactory::class,
+            App\EndPoint\Middleware\BoardMiddleware::class => App\EndPoint\Middleware\BoardMiddlewareFactory::class,
+            App\EndPoint\Handler\RepliesHandler::class => App\EndPoint\Handler\RepliesHandlerFactory::class,
+            App\EndPoint\Handler\TopicsHandler::class => App\EndPoint\Handler\TopicsHandlerFactory::class,
+            App\EndPoint\Handler\UsersHandler::class => App\EndPoint\Handler\UsersHandlerFactory::class,
         ],
     ],
 ];

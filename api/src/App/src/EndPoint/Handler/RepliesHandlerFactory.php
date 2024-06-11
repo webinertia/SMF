@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\EndPoint;
+namespace App\EndPoint\Handler;
 
 use Psr\Container\ContainerInterface;
 

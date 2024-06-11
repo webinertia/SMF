@@ -39,7 +39,7 @@ class ConfigProvider
                 Handler\PingHandler::class => Handler\PingHandler::class,
             ],
             'factories'  => [
-                Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
+                // Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
             ],
             'delegators' => [
                 Application::class => [
@@ -61,14 +61,17 @@ class ConfigProvider
             [
                 'path'            => '/api/boards',
                 'name'            => 'api.boards',
-                'middleware'      => EndPoint\BoardsHandler::class,
-                'allowed_methods' => ['GET'],
+                'middleware'      => [
+                    EndPoint\Middleware\BoardMiddleware::class,
+                    EndPoint\Handler\BoardsHandler::class,
+                ],
+                'allowed_methods' => ['GET', 'POST', 'PUT', 'DELETE'],
             ],
             [
                 'path'            => '/api/topics',
                 'name'            => 'api.topics',
-                'middleware'      => EndPoint\TopicsHandler::class,
-                'allowed_methods' => ['GET'],
+                'middleware'      => EndPoint\Handler\TopicsHandler::class,
+                'allowed_methods' => ['GET', 'POST', 'PUT', 'DELETE'],
             ],
         ];
     }
