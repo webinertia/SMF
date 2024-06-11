@@ -6,7 +6,7 @@ namespace App\EndPoint\Exception;
 
 use DomainException;
 
-final class MethodNotImplementedException extends DomainException
+final class MethodNotAllowedException extends DomainException
 {
 
 }

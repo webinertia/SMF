@@ -18,8 +18,13 @@ class BoardsHandler implements RequestHandlerInterface, HttpMethodAwareInterface
     public function __construct(
 
     ) {
-
+        //todo: bring in Repositories
     }
+
+    /**
+     * The standard handle method is implemented by the Trait and
+     * proxies to the below methods based on Http Method
+     */
 
     public function handleGet(ServerRequestInterface $request): ResponseInterface
     {
